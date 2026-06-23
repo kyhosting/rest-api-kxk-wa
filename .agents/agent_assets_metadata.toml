@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "s0L4kDZ_HbXIVwO3_Cmob"
+uri = "file://project_clean.zip"
+type = "unspecified"
+title = "Project Clean - GO WA x KXK WA"

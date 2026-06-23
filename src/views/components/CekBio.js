@@ -309,11 +309,12 @@ export default {
             txt += `[ NOMOR DENGAN BIO (${withBio.length}) ]\n\n`;
             withBio.forEach((r, idx) => {
                 const checkTimeStr = this.formatDateTime(r.checkTime);
+                const bioTimeStr = r.bioSetAt ? `Set: ${this.formatDateTime(r.bioSetAt)}` : `Dicek: ${checkTimeStr}`;
                 if (r.isBusiness && r.business) {
                     const tierLabel = this.getTierLabel(r.business.rawTier);
                     txt += `[${idx+1}] Nomor: +${r.phone} (${tierLabel})\n`;
                     txt += `Bio: ${r.bio}\n`;
-                    txt += `Dicek: ${checkTimeStr}\n`;
+                    txt += `${bioTimeStr}\n`;
                     txt += `Business Details:\n`;
                     const bname = r.business.name || '-';
                     const since = r.business.memberSince || '-';
@@ -326,7 +327,7 @@ export default {
                 } else {
                     txt += `[${idx+1}] Nomor: +${r.phone}\n`;
                     txt += `Bio: ${r.bio}\n`;
-                    txt += `Dicek: ${checkTimeStr}\n`;
+                    txt += `${bioTimeStr}\n`;
                 }
                 txt += '\n';
             });
@@ -373,7 +374,7 @@ export default {
             const years = Object.keys(yearStats).sort();
             if (years.length > 0) {
                 txt += '\n';
-                txt += 'Statistik Bio Berdasarkan Tahun Cek:\n';
+                txt += 'Statistik Bio Berdasarkan Tahun Set Bio:\n';
                 years.forEach(year => {
                     txt += `- ${year}              : ${yearStats[year]}\n`;
                 });
@@ -591,7 +592,7 @@ export default {
                 <!-- Year Stats -->
                 <div v-if="Object.keys(stats.yearStats).length > 0" class="ui segment" style="margin-top:8px; padding:12px 16px;">
                     <div style="font-weight:bold; margin-bottom:8px; color:#2980b9;">
-                        <i class="calendar icon"></i> Statistik Bio Berdasarkan Tahun Cek
+                        <i class="calendar icon"></i> Statistik Bio Berdasarkan Tahun Set Bio
                     </div>
                     <div class="ui horizontal list">
                         <div v-for="(count, year) in stats.yearStats" :key="year" class="item">

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#128C7E"/>
+      <stop offset="100%" style="stop-color:#075E54"/>
+    </linearGradient>
+    <linearGradient id="xGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f5ff"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="squircle">
+      <rect width="200" height="200" rx="45" ry="45"/>
+    </clipPath>
+  </defs>
+
+  <!-- Squircle background -->
+  <rect width="200" height="200" rx="45" ry="45" fill="url(#bgGrad)"/>
+
+  <!-- Subtle shine overlay -->
+  <ellipse cx="80" cy="60" rx="70" ry="45" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- WhatsApp-style speech bubble body (main circle) -->
+  <circle cx="100" cy="96" r="68" fill="white" filter="url(#shadow)"/>
+
+  <!-- Speech bubble tail (bottom-left like WhatsApp) -->
+  <path d="M 55 155 Q 40 175 28 182 Q 50 178 62 162 Z" fill="white"/>
+
+  <!-- GO WA text top -->
+  <text x="100" y="82" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="22"
+        fill="#075E54" letter-spacing="1.5">GO WA</text>
+
+  <!-- X center with gradient -->
+  <text x="100" y="112" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="30"
+        fill="url(#xGrad)" filter="url(#glow)">✕</text>
+
+  <!-- KXK WA text bottom -->
+  <text x="100" y="136" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="19"
+        fill="#075E54" letter-spacing="1">KXK WA</text>
+</svg>
